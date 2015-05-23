@@ -1,6 +1,6 @@
 #偷揉电台v7
 
-![偷揉电台v7](http://ww4.sinaimg.cn/large/a15b4afegw1ese0jetsgkg20qh0k5jst)
+![偷揉电台v7](http://ww4.sinaimg.cn/large/a15b4afegw1ese0z9u9c2g20xj0k5dge)
 
 极简二次元弹幕（个人）电台
 
