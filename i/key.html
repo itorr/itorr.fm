@@ -1,0 +1,60 @@
+<style>
+#key-btn{position:absolute;bottom:1em;left:1em;
+	cursor:help;opacity:.5;
+	display:none;}
+
+#key-btn:hover{opacity:1;}
+
+
+#key-btn svg{width:40px;height:40px;}
+
+
+#key-box{background:rgba(200,200,200,.6);
+	position:absolute;top:0;left:0;width:100%;height:100%;z-index:3;
+	cursor:pointer;}
+#key-box.h{opacity:0;z-index:-1;}
+
+#key-btn,#key-box{transition:.3s ease;}
+
+
+#key-box p{position:absolute;
+	color:#333;text-shadow:-1px 1px 2px #FFF;
+	font:800 48px/1 'Courier New','Lucida Console',monospace;}
+.k-q{top:50px;left:50px;}
+.k-r{bottom:50px;left:50px;}
+.k-m{right:50px;bottom:50px;}
+.k-t{left:50%;margin-left:-10px;bottom:180px;}
+.k-l{left:50%;margin-left:-10px;bottom:90px;}
+.k-p{left:50%;margin-left:-120px;bottom:90px;}
+.k-n{left:50%;margin-left:100px;bottom:90px;}
+
+</style>
+
+<a id="key-btn">
+<svg>
+<ellipse transform="matrix(0.9318 0.3631 -0.3631 0.9318 4.4103 -7.3365)" cx="21.723" cy="8.065" rx="4.345" ry="4.631"/>
+<path d="M26.664,13.263c0,0-5.501,17.092-4.332,18.326c1.17,1.235,5.92-1.199,5.92-1.199s-9.289,9.676-11.689,5.576
+	c-2.709-4.628,1.078-19.496,0.614-17.145l-4.433-0.679l0.415-1.444L26.664,13.263z"/>
+</svg>
+
+
+</a>
+<div id="key-box" class="h">
+	<a class="close"></a>
+	<p class="k-q">Q</p>
+	<p class="k-r">R</p>
+	<p class="k-m">M</p>
+	<p class="k-t">T</p>
+	<p class="k-l">L</p>
+	<p class="k-p">P</p>
+	<p class="k-n">N</p>
+</div>
+<script>
+
+$('#key-btn').onclick=function(){
+	$('#key-box').className='';
+};
+$('#key-box').onclick=function(){
+	$('#key-box').className='h';
+};
+</script>

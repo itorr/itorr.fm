@@ -1,0 +1,14 @@
+.star{height:100px;width:100px;color:#F00;
+	position:absolute;bottom:40px;left:50%;margin-left:-50px;}
+
+.star,
+.star svg{transition:.5s ease;}
+
+.star.a,
+.star.a svg{transition:2s cubic-bezier(0,.9,.74,1.62);}
+
+.star.a{-webkit-transform:translateY(-300px);transform:translateY(-300px);}
+.star.a svg{-webkit-transform:rotate(720deg) scale(0);transform:rotate(720deg) scale(0);}
+
+.star.min,
+.star.min svg{transition:none;-webkit-transform:scale(0);transform:scale(0);}

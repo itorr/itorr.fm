@@ -1,0 +1,207 @@
+<style>
+#s-box{position:absolute;position:fixed;top:0;left:0;bottom:0;right:0;z-index:4;
+	background:#222;background:rgba(0,0,0,.9);
+	
+	transition:opacity .3s ease;
+	opacity:1;}
+#s-box.h{z-index:-1;opacity:0;pointer-events:none;}
+
+#s-box:before{content:'';position:absolute;left:0;right:0;top:0;height:150px;
+	pointer-events:none;
+	background:linear-gradient(rgba(10,10,10,.95) 0,rgba(10,10,10,.3) 50%,rgba(10,10,10,0) 100%);z-index:1;}
+
+.close{position:absolute;z-index:1;
+	font:bold 3em/1 Arial;width:1em;text-align:center;color:#FFF;cursor:pointer;
+	opacity:.5;}
+
+#s-box .close{top:14px;left:14px;}
+.close:hover{opacity:.7;}
+
+
+
+#s{min-width:340px;width:50%;margin:2em auto;position:relative;}
+#s input{border:0;margin:0;font-size:24px;line-height:34px;background:none;border-radius:.3em;
+	width:100%;padding:7px 7px 7px 48px;background:#EEE;
+	text-align:left;
+	position:relative;z-index:1;
+	display:block;-webkit-appearance:none;
+	transition:.3s ease;
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;
+	outline:none}
+
+#s input:focus{}
+#s button{position:absolute;z-index:1;left:0;top:0;
+	border:0;margin:0;padding:4px;
+	
+	-webkit-appearance:none;
+	background:none;
+	cursor:pointer;}
+#s button svg{width:40px;height:40px;}
+
+#su{display:block;text-align:center;
+	overflow-y:auto;-webkit-overflow-scrolling:touch;
+	position:absolute;top:0;left:0;bottom:0;right:0;padding:120px 0;
+
+	-moz-box-sizing:border-box;
+	box-sizing:border-box;}
+#su li{width:300px;min-height:100px;padding-left:100px;margin:1em;
+	text-align:left;color:#FFF;
+	position:relative;
+	display:inline-block;vertical-align:top;}
+#su .noL{width:500px;}
+#su a{color:#FFF;}
+#su img{position:absolute;left:0;top:0;
+	width:80px;height:80px;border-radius:50%;background:#222;}
+#su h4{font-size:1.4em;line-height:1.1;padding:10px 0;}
+#su p{opacity:.5;}
+
+#showS{top:0;left:0;opacity:1;}
+
+.s-banner{text-align:center;font-size:2em;color:#FFF;padding:2em;}
+
+
+
+#su::-webkit-scrollbar-track-piece{background:#444;}
+#su::-webkit-scrollbar{width:8px;height:8px;}
+#su::-webkit-scrollbar-thumb{height:40px;background-color:#666;}
+#su::-webkit-scrollbar-thumb:hover{background-color:#888;}
+</style>
+
+<a class="btn" id="showS"><svg viewBox="0 0 30 30"><path fill="#333" d="M24.806,23.424l-4.694-4.694c0.977-1.275,1.565-2.863,1.565-4.59c0-4.174-3.396-7.569-7.569-7.569
+		S6.539,9.966,6.539,14.14c0,4.173,3.396,7.569,7.569,7.569c1.727,0,3.315-0.588,4.59-1.565l4.694,4.694L24.806,23.424zM8.539,14.14c0-3.071,2.498-5.569,5.569-5.569s5.569,2.499,5.569,5.569s-2.498,5.569-5.569,5.569S8.539,17.211,8.539,14.14z"/></svg></a>
+
+
+<div id="s-box" class="h">
+	<span class="close" title="关闭">×</span>
+	<form id="s" action="x/?a=search"><!--http://www.xiami.com/search/json-->
+		<input name="k" required placeholder="输入关键字，进行搜索！">
+		<button type="submit"><svg viewBox="0 0 30 30"><path fill="#333" d="M24.806,23.424l-4.694-4.694c0.977-1.275,1.565-2.863,1.565-4.59c0-4.174-3.396-7.569-7.569-7.569
+		S6.539,9.966,6.539,14.14c0,4.173,3.396,7.569,7.569,7.569c1.727,0,3.315-0.588,4.59-1.565l4.694,4.694L24.806,23.424zM8.539,14.14c0-3.071,2.498-5.569,5.569-5.569s5.569,2.499,5.569,5.569s-2.498,5.569-5.569,5.569S8.539,17.211,8.539,14.14z"/></svg></button>
+	</form>
+	<div id="su"></div>
+</div>
+<script>
+!function(){
+var sb=$('#s-box');
+
+$('#showS').onclick=function(){
+	sb.className='';
+	Si.onfocus();
+}
+
+$('#s-box .close').onclick=function(){
+	sb.className='h';
+}
+
+var 
+F=$('#s'),
+su=$('#su'),
+Si=F.k,
+k,
+X,
+T,
+start=0,
+get=function(k,start){
+	//console.log(start);
+	X=x('x/?a=search&k='+encodeURIComponent(k)+'&start='+(start||0),function(ps){
+		if(!ps||ps.length==0){
+			if(su.innerHTML.length<40||start==0){
+				noL('没有找到相关内容，尝试更换关键词？');
+			}else{
+				noMore('没有更多了');
+			}
+			su.onscroll=null;
+			return 
+		}
+	
+		var h='';
+		for(var i=0,o;i<ps.length;i++){
+			o=ps[i];
+			if(!o.xid)
+				continue;
+
+			h+='<li><a href="#!'+o.xid+'"><img src="'+
+			function(){
+				if(o.img.match(/^http:\/\//))
+					return o.img;
+				else
+					return 'http://img.xiami.net/images/album/'+o.img;
+			}()+'"><h4>'+o.title+'</h4>\
+			<p>「'+o.album_name+'」'+o.artist+'</p>'
+		}
+		if(start==0)
+			su.innerHTML='<ul>'+h+'</ul>';
+		else{
+			var ul=$.D.m('ul');
+			ul.innerHTML=h;
+			$.D.a(su,ul);
+		}
+
+		start+=ps.length;
+
+		//console.log(ps.length);
+		if(ps.length<30){
+			noMore('没有更多了');
+			su.onscroll=null;
+			return;
+		}
+		//console.log('!');
+		su.onscroll=function(){
+			
+			if((su.scrollTop+su.clientHeight+400)>su.scrollHeight){
+				su.onscroll=null;
+
+				get(k,start);
+
+			}
+
+		};
+	});
+	//console.log(3)
+},
+noL=function(i){
+	su.innerHTML='<p class="s-banner">'+i+'</p>';
+},
+noMore=function(i){
+	var ul=$.D.m('p');
+	ul.className='s-banner';
+	ul.innerHTML=i;
+	$.D.a(su,ul);
+};
+Si.onfocus=Si.onchange=Si.onkeypress=Si.onkeyup=function(){
+	if(Si.value==k)
+		return;
+
+	if(X)
+		X.abort();
+
+	k=Si.value;
+
+	clearTimeout(T);
+	T=setTimeout(function(){
+		start=0;
+		get(k,start);
+	},200);
+};
+
+Si.onkeydown=function(e){
+	if(e&&e.stopPropagation) 
+		e.stopPropagation();
+    else
+		window.event.cancelBubble=true;
+};
+
+F.onsubmit=function(){
+	Si.onfocus();
+	return false
+};
+su.ontouchmove=function(e){
+	e.stopPropagation();
+	//console.log('su');
+};
+su.onmousewheel=function(e){
+	e.stopPropagation();
+}
+}();
+</script>

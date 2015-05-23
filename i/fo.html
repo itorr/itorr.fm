@@ -1,0 +1,135 @@
+<style>
+
+#fo-btn{right:0;bottom:0;}
+#fo-btn:hover{
+	-webkit-transform:rotate(360deg) scale(1.2);
+	-moz-transform:rotate(360deg) scale(1.2);
+	transform:rotate(360deg) scale(1.2);}
+
+
+#fo-box .close{position:absolute;right:.5em;top:.5em;
+	left:auto;
+	color:#333;}
+
+
+#fo-box-drow{position:absolute;top:0;left:0;z-index:2;
+	width:100%;height:100%;
+	opacity:.7;
+	background:#333;background:rgba(0,0,0,.9);
+	cursor:pointer;}
+
+
+#fo-box-drow.h{opacity:0;z-index:-1;pointer-events:none;}
+
+#fo-box{height:92px;
+	background:#FFF;
+	box-shadow:0 0 20px rgba(0,0,0,.2);
+	position:absolute;bottom:0;left:0;right:0;z-index:3;}
+
+#fo-box.h{
+	-webkit-transform:translateY(120px);
+	-moz-transform:translateY(120px);
+	transform:translateY(120px);
+	z-index:-1;opacity:0;pointer-events:none;}
+
+#fo-box ul{text-align:center;}
+#fo-box li{display:inline-block;padding:16px 8px;}
+#fo-box li a{display:block;height:60px;width:60px;cursor:pointer;}
+#fo-box li svg{height:60px;width:60px;display:block;}
+
+#fo-box,.fo-box,#fo-btn,
+#fo-box-drow,#qr{transition:.3s ease;}
+
+#qr{position:absolute;bottom:122px;right:30px;z-index:3;
+	min-width:100px;min-height:100px;padding:20px;
+	background:#FFF;
+
+	border-radius:5px;}
+#qr.h{opacity:0;}
+</style>
+
+<a class="btn" id="fo-btn"><svg viewBox="0 0 40 40"><path d="M33.917,12.355c-8.064-4.622-17.608-5.762-17.608-5.762l1.602,4.296c0,0-12.967,6.269-10.886,22.436
+	C11.027,23.34,21.93,21.662,21.93,21.662l1.902,5.099C23.832,26.761,27.294,18.898,33.917,12.355z"/></svg></a>
+
+<div id="fo-box-drow" class="h"></div>
+<div id="fo-box" class="h">
+	<img id="qr" class="h">
+	<span class="close" title="关闭">×</span>
+	<ul>
+		<li><a id="fo-btn-down"><svg viewBox="0 0 50 50">
+<polygon fill="#4D9EFF" points="18.351,6 7,17.31 7,45 14,45 25.322,41.501 37,45 43,45 43,6 "/>
+<circle fill="#FFFFFF" cx="25.156" cy="25.126" r="5.955"/>
+<rect x="14" y="37" fill="#EEE" width="23" height="8"/>
+</svg></a></li>
+		<li><a id="fo-btn-weibo" target="_blank">
+<svg viewBox="0 0 50 50">
+	<path fill="#CC2B37" d="M37.101,24.009c-0.882-0.328-1.093-0.749-0.777-1.586c0.179-0.474,0.305-0.982,0.365-1.486
+		c0.285-2.371-0.72-3.814-3.082-4.204c-1.03-0.17-2.144-0.172-3.165,0.027c-1.575,0.308-3.038,0.915-4.593,1.339
+		c-0.688,0.188-0.913,0.083-1.063,0.011c-0.187-0.089-0.249-0.378-0.109-0.933c0.141-0.555,0.418-1.518,0.425-2.297
+		c0.02-2.256-1.308-3.667-3.563-3.659c-1.043,0.004-2.155,0.164-3.117,0.55c-7.282,2.926-12.552,8.003-15.763,15.16
+		c-0.834,1.858-1.096,3.864-0.658,5.901c0.709,3.293,2.885,5.45,5.641,7.096c4.245,2.536,8.642,3.525,13.824,3.628
+		c3.472-0.184,3.772-0.307,5.623-0.65c5.037-0.935,9.585-2.897,13.033-6.852C44.379,31.175,43.14,26.258,37.101,24.009z
+		 M32.51,35.554c-2.358,2.637-5.437,3.981-8.82,4.677c-1.42,0.292-2.883,0.381-3.844,0.502c-3.726-0.125-6.848-0.666-9.604-2.492
+		c-2.219-1.47-3.716-3.405-3.612-6.231c0.067-1.824,0.905-3.324,2.119-4.623c2.233-2.389,5.066-3.691,8.201-4.397
+		c3.973-0.895,7.905-0.814,11.71,0.753c1.043,0.43,2.061,1.011,2.953,1.7C35.113,28.149,35.462,32.253,32.51,35.554z"/>
+	<path fill="#040000" d="M26.885,30.725c-0.574-2.647-2.511-3.988-5.041-4.56c-0.533-0.121-1.093-0.12-1.492-0.16
+		c-2.914,0.064-5.235,1.076-6.934,3.278c-2.548,3.302-1.339,7.641,2.559,9.109c3.007,1.132,5.844,0.615,8.356-1.34
+		C26.376,35.465,27.452,33.338,26.885,30.725z M16.933,35.97c-1.156,0.012-2.117-0.846-2.137-1.908
+		c-0.025-1.321,1.261-2.486,2.753-2.494c1.276-0.007,2.084,0.708,2.1,1.858C19.666,34.763,18.395,35.955,16.933,35.97z
+		 M21.241,32.462c-0.515,0.121-1.008-0.1-1.1-0.493c-0.092-0.393,0.251-0.809,0.767-0.93c0.515-0.121,1.008,0.1,1.1,0.493
+		S21.756,32.341,21.241,32.462z"/>
+	<path fill="#F7932F" d="M36.207,5.916c7.745,0.099,13.508,7.094,12.026,14.679c-0.112,0.574-0.186,1.292-0.559,1.644
+		c-0.475,0.449-1.245,0.829-1.875,0.812c-0.868-0.024-1.343-0.762-1.313-1.669c0.014-0.427,0.141-0.851,0.228-1.273
+		c1.264-6.08-3.772-11.408-9.928-10.508c-0.386,0.056-0.797,0.147-1.165,0.071c-0.863-0.177-1.395-0.744-1.42-1.645
+		c-0.025-0.902,0.472-1.522,1.328-1.72C34.405,6.105,35.313,6.041,36.207,5.916z"/>
+	<path fill="#F7932F" d="M36.328,12.328c3.624,0.061,6.283,3.229,5.743,6.836c-0.191,1.279-0.903,2.014-1.832,1.893
+		c-0.985-0.128-1.387-0.869-1.222-2.251c0.246-2.062-1.12-3.6-3.114-3.505c-1.423,0.068-2.118-0.36-2.18-1.342
+		c-0.062-0.969,0.674-1.566,2.016-1.63C35.935,12.32,36.131,12.328,36.328,12.328z"/>
+</svg>
+</a></li>
+		<li><a id="fo-btn-xiami"><svg viewBox="0 0 40 40"><path fill="#FF9700" d="M36,30.823C36,33.682,33.682,36,30.823,36H8.177C5.318,36,3,33.682,3,30.823V8.177C3,5.318,5.318,3,8.177,3h22.647C33.682,3,36,5.318,36,8.177V30.823z"/><path fill="#FFFFFF" d="M9.724,13.371h3.238V9.346h1.487v4.025h3.238v8.399h-3.238v4.638c0.816-0.116,1.575-0.204,2.275-0.263c-0.175-0.466-0.438-1.138-0.787-2.013c0.116,0.175,0.057,0-0.175-0.524l1.4-0.525c0.466,0.934,1.05,2.45,1.75,4.55c0.116,0.291,0.204,0.495,0.263,0.612l-1.487,0.525c-0.175-0.35-0.321-0.787-0.438-1.312c-0.584,0-1.605,0.116-3.062,0.35c-2.509,0.292-4.2,0.525-5.075,0.7l-0.175-1.662c0.407,0,1.195-0.058,2.362-0.175c0.7-0.058,1.254-0.088,1.663-0.088v-4.812h-1.75v0.875H9.724V13.371z M11.212,14.858v5.425h1.75v-5.425H11.212z M16.199,14.858h-1.75v5.425h1.75V14.858z M18.125,11.184h11.813v1.487h-6.039v5.25l0.701-0.962c1.516,1.05,3.295,2.334,5.338,3.85l-1.139,1.399c-1.633-1.399-3.268-2.682-4.9-3.85v11.55h-1.662V12.671h-4.112V11.184z"/></svg></a></li>
+	</ul>
+<div>
+<script>
+
+$('#fo-btn').onclick=function(){
+	$('#fo-box').className=
+	$('#fo-box-drow').className='';
+
+
+	if(!navigator.userAgent.match(/ipad|iphone|touch|android/i))
+		QR();
+};
+$('#fo-box-drow').onclick=
+$('#fo-box .close').onclick=function(){
+	$('#fo-box').className=
+	$('#qr').className=
+	$('#fo-box-drow').className='h';
+};
+$('#fo-btn-down').onclick=function(){
+	open(fm.A.src,'_black');
+	return false;
+};
+$('#fo-btn-weibo').onclick=function(){
+	if(!$('img').src)
+		return false;
+
+	this.href='http://service.weibo.com/share/share.php?url='+encodeURIComponent(location.href)+'&title='+encodeURIComponent('#偷揉电台#正在播放『'+document.title+'』，这里可以边听歌变发射弹幕哟~')+'&language=zh_cn&pic='+encodeURIComponent($('img').src.replace(/_(3|2|1)\./,'.'));
+};
+$('#fo-btn-xiami').onclick=function(){
+	open('http://www.xiami.com/song/'+location.hash.match(/\d+/),'_black');
+	return false;
+};
+
+var QR=function(){
+	$.x('http://dev.vscam.co/x/?a=qr&t='+encodeURIComponent(location.href)+'&size=4',function(o){
+		if(o.error)
+			return;
+		if(o.hash){
+			$('#qr').src='http://dev.vscam.co/x/q/'+o.hash+'.png';
+			$('#qr').className='';
+		}	
+	});
+};
+
+</script>

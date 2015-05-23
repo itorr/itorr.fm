@@ -1,0 +1,122 @@
+<style>
+
+
+#menu{
+	font-size:14.3px;line-height:19px;color:#000;
+	position:absolute;position:fixed;z-index:9;margin:-5px 0 0 0;
+	width:180px;min-height:50px;padding:4px 0;
+	background:#FFF;background:rgba(255,255,255,.97);
+	box-shadow:4px 4px 8px rgba(0,0,0,.15);
+	border:1px solid rgba(50,50,50,.2);
+	border-radius:5px;}
+#menu.h{opacity:0;}
+
+#menu a{display:block;padding:0 12px 0 20px;
+	cursor:pointer;}
+#menu a span{float:right;text-transform:capitalize;
+	font-family:'Courier New','Lucida Console',monospace;
+	font-weight:bold;}
+#menu a:hover{background:#37F;color:#FFF;
+	background:linear-gradient(#37F 0,#58F 8%,#37F 50%,#26F 92%,#04E 100%);}
+#menu hr{
+	margin:7px 1px;
+	border:0 none;
+	border-top:1px solid #EEE;}
+</style>
+<div id="menu" class="h">
+	<a id="m-play">暂停/播放<span>p</span></a>
+	<a id="m-like">喜欢<span>l</span></a>
+	<a id="m-next">下一首<span>n</span></a>
+	<hr>
+	<a id="m-down">下载音乐<span>d</span></a>
+	<a id="m-xiami">在虾米中查看...<span>x</span></a>
+	<a id="m-weibo">分享到微博...<span>s</span></a>
+	<hr>
+	<a id="m-s">搜索<span>q</span></a>
+	<hr>
+	<a id="m-bug">错误反馈...</a>
+	<hr>
+	<a id="m-blog">访问作者网站...</a>
+	<a id="m-help">帮助<span>i</span></a>
+</div>
+<script>!function(doc){
+
+var
+$=function(i){return doc.getElementById(i)},
+o=$('menu');
+var hideM=function(e){
+	o.className='h';
+	doc.onclick=null;
+};
+doc.oncontextmenu=function(e){
+	e=e||window.event;
+
+	var 
+	body=document.body,
+	top=e.clientY,
+	left=e.clientX;
+
+
+	var MaxLeft=o.offsetWidth+15;
+	if(body.offsetWidth-left<MaxLeft)
+		left=body.offsetWidth-MaxLeft;
+
+	var MaxTop=o.offsetHeight+15;
+	if(body.offsetHeight-top<MaxTop)
+		top=body.offsetHeight-MaxTop;
+	o.style.cssText='left:'+left+'px;top:'+top+'px;';
+	o.className='';
+
+	doc.onclick=hideM;
+	return false;
+};
+o.onclick=function(e){
+	e.stopPropagation();
+}
+o.oncontextmenu=function(e){
+	e.stopPropagation();
+	return false;
+}
+var h=function(i,f){
+	var o=$('m-'+i);
+	if(o)
+		$('m-'+i).onclick=function(e){
+
+			f(e);
+			hideM();
+		};
+};
+
+h('play',function(e){
+	$('play').click();
+});
+h('like',function(e){
+	$('like').click();
+});
+h('next',function(e){
+	$('next').click();
+});
+h('down',function(e){
+	$('fo-btn-down').click();
+});
+h('xiami',function(e){
+	$('fo-btn-xiami').click();
+});
+h('weibo',function(e){
+	$('fo-btn-weibo').click();
+});
+h('s',function(e){
+	$('showS').click();
+});
+h('bug',function(e){
+	open('http://1.mouto.org/','_black','height=409,width=564');
+});
+h('blog',function(e){
+	open('http://i.mouto.org/','_black');
+});
+h('help',function(e){
+	$('key-btn').click();
+});
+
+
+}(document)</script>
