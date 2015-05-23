@@ -21,6 +21,7 @@ http://fm.itorr.sinaapp.com
 ##联系我
 itorrrrrr#me.com
 
+##晚些时间更新配置文件！
 _________________________
 
 关于版本7的更新：
