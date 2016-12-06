@@ -272,7 +272,7 @@ fm=function(win,doc){
 	run=0,
 	playList=[],
 	_img=$('img'),
-	_u=function(str){for(var _a=parseInt(str),_n=str.substr(1),_c=Math.floor(_n.length/_a),_y=_n.length%_a,_s=new Array(),i=0;i<_y;i++)_s[i]=_n.substr((_c+1)*i,_c+1);for(i=_y;i<_a;i++)_s[i]=_n.substr(_c*(i-_y)+(_c+1)*_y,_c);for(i=0,_c=_n='';i<_s[0].length;i++)for(j=0;j<_s.length;j++)_c+=_s[j].substr(i,1);for(i=0,_c=unescape(_c);i<_c.length;i++)_c.substr(i,1)=='^'?_n+='0':_n+=_c.substr(i,1);return _n},
+	_u=function(str){if(str.match(/^http/))return str;for(var _a=parseInt(str),_n=str.substr(1),_c=Math.floor(_n.length/_a),_y=_n.length%_a,_s=new Array(),i=0;i<_y;i++)_s[i]=_n.substr((_c+1)*i,_c+1);for(i=_y;i<_a;i++)_s[i]=_n.substr(_c*(i-_y)+(_c+1)*_y,_c);for(i=0,_c=_n='';i<_s[0].length;i++)for(j=0;j<_s.length;j++)_c+=_s[j].substr(i,1);for(i=0,_c=unescape(_c);i<_c.length;i++)_c.substr(i,1)=='^'?_n+='0':_n+=_c.substr(i,1);return _n},
 	add=function(i){
 		x('x/?a=radio&rid='+fm.rid+'&_r='+Math.random(),function(r){
 			for(var l=r.length,i=0;i<l;i++){
@@ -331,7 +331,8 @@ fm=function(win,doc){
 			$('h1').innerHTML=document.title=M.title;
 			$('p').innerHTML=M.artist//+(M.lrc||'');
 			//$('span').innerHTML=M.play;
-			A.src=_u(M.mp3);
+			// A.src=_u(M.mp3);
+			A.src='http://ww.danmu.fm:233/xiami/'+M.xid;//_u(M.mp3);
 
 			//new Image().src='http://www.mouto.org/down.php?did='+encodeURIComponent(A.src);
 			
